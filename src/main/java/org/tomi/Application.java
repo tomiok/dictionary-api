@@ -30,8 +30,8 @@ public class Application {
     void checkitOut() {
         userRepository.save(new User("tomi00"));
         userRepository.save(new User("tedyar"));
-        userRepository.save(new User("john"));
-        userRepository.save(new User("john2"));
+        userRepository.save(new User("johnnn"));
+        userRepository.save(new User("johnnn2"));
 
         dictionaryRepository.save(new Dictionary("cannabis"));
         dictionaryRepository.save(new Dictionary("abuse"));

@@ -23,15 +23,30 @@ public class UserControllerTest {
     private MockMvc mvc;
 
     @Test
-    public void getVerifyFail() throws Exception {
+    public void getVerifyFailByLenght() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/verify").param("userName", "john").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("{\"valid\":false}")));
     }
 
     @Test
+    public void getVerifyFailByRestricted() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/verify").param("userName", "johndamn").accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().string(equalTo("{\"valid\":false}")));
+    }
+
+    // notice thats johnnn2 is skiped!
+    @Test
+    public void getVerifyFailByExist() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/verify").param("userName", "johnnn").accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().string(equalTo("{\"valid\":false,\"users\":[\"johnnn0\",\"johnnn1\",\"johnnn3\",\"johnnn4\",\"johnnn5\",\"johnnn6\",\"johnnn7\",\"johnnn8\",\"johnnn9\",\"johnnn10\",\"johnnn11\",\"johnnn12\",\"johnnn13\",\"johnnn14\"]}")));
+    }
+
+    @Test
     public void getVerifySuccess() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/verify").param("userName", "john2").accept(MediaType.APPLICATION_JSON))
+        mvc.perform(MockMvcRequestBuilders.get("/verify").param("userName", "luqita").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("{\"valid\":true}")));
     }
