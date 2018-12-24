@@ -1,32 +1,25 @@
 package org.tomi.dictionary;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 public class Dictionary {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue
   private Long id;
 
-  @JsonProperty
   private String word;
 
   public Dictionary() {}
 
   public Dictionary(String word) {
-    this.word = word;
-  }
-
-  public String getWord() {
-    return word;
-  }
-
-  public void setWord(String word) {
     this.word = word;
   }
 }

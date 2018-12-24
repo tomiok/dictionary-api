@@ -1,4 +1,4 @@
-package org.tomi.user;
+package org.tomi.user.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Result {
 
-  private Boolean valid = false;
+  private boolean valid;
   private List<User> users;
 
   public Result() {}
@@ -17,6 +17,10 @@ public class Result {
       this.users = null;
       valid = true;
     }
+  }
+
+  public Result(final boolean valid) {
+    this.valid = valid;
   }
 
   public Boolean getValid() {

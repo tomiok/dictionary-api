@@ -6,8 +6,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.tomi.dictionary.Dictionary;
 import org.tomi.dictionary.DictionaryRepository;
-import org.tomi.user.User;
-import org.tomi.user.UserRepository;
+import org.tomi.user.model.User;
+import org.tomi.user.model.UserRepository;
 
 @SpringBootApplication
 public class Application {
