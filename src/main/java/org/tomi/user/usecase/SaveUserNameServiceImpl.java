@@ -3,13 +3,13 @@ package org.tomi.user.usecase;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 import org.apache.commons.text.similarity.LevenshteinDistance;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.tomi.dictionary.Dictionary;
 import org.tomi.dictionary.DictionaryRepository;
 import org.tomi.user.model.User;
 import org.tomi.user.model.UserRepository;
 
-@Component
+@Service
 public class SaveUserNameServiceImpl implements SaveUserNameService {
 
   private final UserRepository userRepository;
