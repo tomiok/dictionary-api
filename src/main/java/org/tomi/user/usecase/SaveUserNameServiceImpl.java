@@ -23,16 +23,14 @@ public class SaveUserNameServiceImpl implements SaveUserNameService {
   }
 
   @Override
-  public boolean saveUserName(final String userName) {
+  public String saveUserName(final String userName) {
     // validate length
     if (userName.length() < 6) {
-      return false;
+      throw new IllegalArgumentException("The username cannot be shorter than 6 chars.");
     }
 
     // validate words from dict if is a forbidden word.
-    if (this.verityOnDictionary(userName)) {
-      return false;
-    }
+    this.verityOnDictionary(userName);
 
     // find all the user names
     Stream<String> names = userRepository
@@ -43,15 +41,16 @@ public class SaveUserNameServiceImpl implements SaveUserNameService {
     // check if exist userName
     if (names.noneMatch(u -> u.equalsIgnoreCase(userName))) {
       userRepository.save(new User(userName));
-      return true;
+      return userName;
     }
 
-    return false;
+    throw new IllegalArgumentException("The username " + userName + " is already in use.");
   }
 
-  private boolean verityOnDictionary(String userName) {
+  private void verityOnDictionary(String userName) {
     Iterable<Dictionary> restricted = dictionaryRepository.findAll();
-    return StreamSupport.stream(restricted.spliterator(), false).anyMatch(d -> userName.contains(d.getWord()));
+    Stream<Dictionary> dic = StreamSupport.stream(restricted.spliterator(), false);
+    dic.forEach(d -> getDistance(d.getWord(), userName));
   }
 
   /**
