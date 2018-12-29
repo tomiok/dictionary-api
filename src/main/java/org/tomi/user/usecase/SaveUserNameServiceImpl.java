@@ -25,7 +25,7 @@ public class SaveUserNameServiceImpl implements SaveUserNameService {
   @Override
   public String saveUserName(final String userName) {
     // validate length
-    if (userName.length() < 6) {
+    if (userName.length() < 4) {
       throw new IllegalArgumentException("The username cannot be shorter than 6 chars.");
     }
 
@@ -62,8 +62,9 @@ public class SaveUserNameServiceImpl implements SaveUserNameService {
   private void getDistance(String local, String target) {
     LevenshteinDistance distance = new LevenshteinDistance();
     int dis = distance.apply(local, target);
-    if (dis < distance.getThreshold()) {
-      throw new IllegalArgumentException();
+    if (dis < 4) {
+      throw new IllegalArgumentException("You need to change your username, it is probably hurting someone's "
+                                         + "susceptibility. ");
     }
   }
 }
