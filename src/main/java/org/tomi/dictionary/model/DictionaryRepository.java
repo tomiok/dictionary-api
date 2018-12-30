@@ -1,4 +1,4 @@
-package org.tomi.dictionary;
+package org.tomi.dictionary.model;
 
 import org.springframework.data.repository.CrudRepository;
 

@@ -1,4 +1,4 @@
-package org.tomi.user.usecase.user;
+package org.tomi.user.usecase;
 
 public interface SaveUserNameService {
 

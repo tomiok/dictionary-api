@@ -7,7 +7,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.tomi.user.usecase.user.SaveUserNameServiceImpl;
+import org.tomi.user.usecase.SaveUserNameServiceImpl;
 import org.tomi.user.web.UserController;
 
 @RunWith(SpringRunner.class)

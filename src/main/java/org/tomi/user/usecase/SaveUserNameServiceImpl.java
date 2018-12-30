@@ -1,11 +1,11 @@
-package org.tomi.user.usecase.user;
+package org.tomi.user.usecase;
 
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 import org.apache.commons.text.similarity.LevenshteinDistance;
 import org.springframework.stereotype.Service;
-import org.tomi.dictionary.Dictionary;
-import org.tomi.dictionary.DictionaryRepository;
+import org.tomi.dictionary.model.Dictionary;
+import org.tomi.dictionary.model.DictionaryRepository;
 import org.tomi.user.model.User;
 import org.tomi.user.model.UserRepository;
 
