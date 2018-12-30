@@ -12,6 +12,8 @@ import org.tomi.user.model.UserRepository;
 @Service
 public class SaveUserNameServiceImpl implements SaveUserNameService {
 
+  private static final int MIN_USER_NAME_LENGTH = 4;
+
   private final UserRepository userRepository;
 
   private final DictionaryRepository dictionaryRepository;
@@ -25,7 +27,7 @@ public class SaveUserNameServiceImpl implements SaveUserNameService {
   @Override
   public String saveUserName(final String userName) {
     // validate length
-    if (userName.length() < 4) {
+    if (userName.length() < MIN_USER_NAME_LENGTH) {
       throw new IllegalArgumentException("The username cannot be shorter than 6 chars.");
     }
 

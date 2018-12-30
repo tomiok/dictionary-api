@@ -1,16 +1,19 @@
 package org.tomi.user.usecase;
 
+import static org.mockito.Mockito.when;
+
 import java.util.Arrays;
+import java.util.Collections;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.tomi.dictionary.Dictionary;
 import org.tomi.dictionary.DictionaryRepository;
+import org.tomi.user.model.User;
 import org.tomi.user.model.UserRepository;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -42,8 +45,19 @@ public class SaveUserNameServiceImplTest {
     Dictionary dic2 = new Dictionary("drugs");
     Iterable<Dictionary> words = Arrays.asList(dic, dic2);
 
-    Mockito.when(dictionaryRepository.findAll()).thenReturn(words);
+    when(dictionaryRepository.findAll()).thenReturn(words);
 
     saveUserNameService.saveUserName("abuse");
+  }
+
+  @Test
+  public void shouldFail_GivenRepeatedName() {
+    thrown.expect(IllegalArgumentException.class);
+    thrown.expectMessage("is already in use");
+    String name = "repeated";
+    when(userRepository.findByUserName(name)).thenReturn(Collections.singletonList(new User(name)));
+
+    saveUserNameService.saveUserName(name);
+
   }
 }
