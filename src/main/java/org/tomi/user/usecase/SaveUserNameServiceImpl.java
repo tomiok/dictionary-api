@@ -4,8 +4,8 @@ import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 import org.apache.commons.text.similarity.LevenshteinDistance;
 import org.springframework.stereotype.Service;
-import org.tomi.dictionary.Dictionary;
-import org.tomi.dictionary.DictionaryRepository;
+import org.tomi.dictionary.model.Dictionary;
+import org.tomi.dictionary.model.DictionaryRepository;
 import org.tomi.user.model.User;
 import org.tomi.user.model.UserRepository;
 
@@ -13,6 +13,8 @@ import org.tomi.user.model.UserRepository;
 public class SaveUserNameServiceImpl implements SaveUserNameService {
 
   private static final int MIN_USER_NAME_LENGTH = 4;
+
+  private static final int MIN_LEV_DISTANCE_THRESHOLD = 4;
 
   private final UserRepository userRepository;
 
@@ -64,7 +66,7 @@ public class SaveUserNameServiceImpl implements SaveUserNameService {
   private void getDistance(String local, String target) {
     LevenshteinDistance distance = new LevenshteinDistance();
     int dis = distance.apply(local, target);
-    if (dis < 4) {
+    if (dis < MIN_LEV_DISTANCE_THRESHOLD) {
       throw new IllegalArgumentException("You need to change your username, it is probably hurting someone's "
                                          + "susceptibility. ");
     }
