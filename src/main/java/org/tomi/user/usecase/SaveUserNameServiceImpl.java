@@ -14,6 +14,8 @@ public class SaveUserNameServiceImpl implements SaveUserNameService {
 
   private static final int MIN_USER_NAME_LENGTH = 4;
 
+  private static final int MIN_LEV_DISTANCE_THRESHOLD = 4;
+
   private final UserRepository userRepository;
 
   private final DictionaryRepository dictionaryRepository;
@@ -64,7 +66,7 @@ public class SaveUserNameServiceImpl implements SaveUserNameService {
   private void getDistance(String local, String target) {
     LevenshteinDistance distance = new LevenshteinDistance();
     int dis = distance.apply(local, target);
-    if (dis < 4) {
+    if (dis < MIN_LEV_DISTANCE_THRESHOLD) {
       throw new IllegalArgumentException("You need to change your username, it is probably hurting someone's "
                                          + "susceptibility. ");
     }

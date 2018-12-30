@@ -43,9 +43,8 @@ public class SaveUserNameServiceImplTest {
     thrown.expect(IllegalArgumentException.class);
     Dictionary dic = new Dictionary("Abuse");
     Dictionary dic2 = new Dictionary("drugs");
-    Iterable<Dictionary> words = Arrays.asList(dic, dic2);
 
-    when(dictionaryRepository.findAll()).thenReturn(words);
+    when(dictionaryRepository.findAll()).thenReturn(Arrays.asList(dic, dic2));
 
     saveUserNameService.saveUserName("abuse");
   }
@@ -58,6 +57,5 @@ public class SaveUserNameServiceImplTest {
     when(userRepository.findByUserName(name)).thenReturn(Collections.singletonList(new User(name)));
 
     saveUserNameService.saveUserName(name);
-
   }
 }
