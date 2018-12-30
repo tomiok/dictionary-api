@@ -1,4 +1,4 @@
-package org.tomi.user.usecase;
+package org.tomi.user.usecase.user;
 
 import static org.mockito.Mockito.when;
 
@@ -10,11 +10,13 @@ import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.tomi.dictionary.Dictionary;
 import org.tomi.dictionary.DictionaryRepository;
 import org.tomi.user.model.User;
 import org.tomi.user.model.UserRepository;
+import org.tomi.user.usecase.user.SaveUserNameServiceImpl;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SaveUserNameServiceImplTest {

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.tomi.user.usecase.SaveUserNameService;
+import org.tomi.user.usecase.user.SaveUserNameService;
 
 @RestController
 public class UserController {
