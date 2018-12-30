@@ -8,7 +8,9 @@ The project is build on spring-boot 2.0
 ```./mvnw spring-boot:run```
 
 
-## Endpoints Json
+## Dictionary and User APIs:
+
+
 ### `GET` -  Verify userName
 
 ### Request
