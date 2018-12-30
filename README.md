@@ -13,9 +13,7 @@ The project is build on spring-boot 2.0
 ### Request
 ```http://localhost:8080/verify?userName=luquita```
 ### Response
-{
-    "valid": true
-}
+* TBD * 
 
 ### `POST` - Add Restricted Word to Dictionary
 ### Request
