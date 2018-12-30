@@ -20,7 +20,7 @@ The project is build on spring-boot 2.0
 ### POST Add Restricted Word to Dictionary
 ### Request
 ```http://localhost:8080/dictionary```
-### Response
+### body
 {
     "word": "shit"
 }
