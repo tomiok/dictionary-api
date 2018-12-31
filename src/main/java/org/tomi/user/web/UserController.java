@@ -19,9 +19,9 @@ public class UserController {
   }
 
   @RequestMapping(path = "/verify", method = RequestMethod.GET)
-  public HttpEntity<?> verify(@RequestParam(value = "userName") String userName) {
+  public HttpEntity<UserHttpResponse> verify(@RequestParam(value = "userName") String userName) {
     String userNameSaved = saveUserNameService.saveUserName(userName);
 
-    return ok().build();
+    return ok(new UserHttpResponse(userNameSaved, UserNameStatus.SAVED));
   }
 }

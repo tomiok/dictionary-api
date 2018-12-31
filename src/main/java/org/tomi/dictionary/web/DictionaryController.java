@@ -34,8 +34,7 @@ public class DictionaryController {
   }
     
   @GetMapping
-  public ResponseEntity<Page<Dictionary>> getAll
-    (@RequestParam("page") int page, @RequestParam("number") int number) {
+  public ResponseEntity<Page<Dictionary>> getAll(@RequestParam("page") int page, @RequestParam("number") int number) {
     return ok(findWordsInDicService.findAll(page, number));
   }
 }
