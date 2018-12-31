@@ -15,14 +15,21 @@ The project is build on spring-boot 2.0
 
 ### Request
 ```http://localhost:8080/verify?userName=tommy```
-### Response
- _TBD_  
+
+### Response - 200 OK
+ ```
+ {
+  "username": "tomiok",
+  "status": "SAVED"
+ }
+ ```
 
 ### `POST` - Add Restricted Word to Dictionary
 
 ### Request
 ```http://localhost:8080/dictionary?word=abuse```
-### body
+
+### Response - 200 OK
 ```
 {
     "word": "abuse",
