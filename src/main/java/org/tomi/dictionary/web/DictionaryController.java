@@ -32,9 +32,10 @@ public class DictionaryController {
     String saved = saveWordService.saveWordInDic(word);
     return ok(new DicHttpResponse(saved, Status.SAVED));
   }
-
+    
   @GetMapping
-  public ResponseEntity<Page<Dictionary>> getAll() {
-    return ok(findWordsInDicService.findAll());
+  public ResponseEntity<Page<Dictionary>> getAll
+    (@RequestParam("page") int page, @RequestParam("number") int number) {
+    return ok(findWordsInDicService.findAll(page, number));
   }
 }

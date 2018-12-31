@@ -16,7 +16,7 @@ public class FindWordInDicServiceImpl implements FindWordsInDicService {
   }
 
   @Override
-  public Page<Dictionary> findAll() {
+  public Page<Dictionary> findAll(int page, int number) {
     return dictionaryRepository.findAll(PageRequest.of(10, 5));
   }
 }

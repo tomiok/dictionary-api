@@ -5,5 +5,5 @@ import org.tomi.dictionary.model.Dictionary;
 
 public interface FindWordsInDicService {
 
-  Page<Dictionary> findAll();
+    Page<Dictionary> findAll(int page, int number);
 }
